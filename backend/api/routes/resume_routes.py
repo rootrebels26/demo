@@ -35,6 +35,12 @@ def analyze_resume():
         return jsonify({"error": "No file uploaded"}), 400
     
     file = request.files['file']
+<<<<<<< HEAD
+=======
+    company = request.form.get('company', 'General')
+    job_role = request.form.get('job_role', 'General')
+    
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
     text = extract_text(file)
     
     if not text:
@@ -49,6 +55,7 @@ def analyze_resume():
         # Get detailed feedback
         feedback_list = get_ats_feedback(text)
         
+<<<<<<< HEAD
         # Get AI analysis for additional insights
         prompt = f"""
         Analyze this resume briefly and provide:
@@ -58,22 +65,54 @@ def analyze_resume():
         
         Resume Content:
         {text[:3000]}
+=======
+        # Enhanced AI analysis for "Real World Scenario"
+        prompt = f"""
+        You are an expert recruiter and hiring manager at {company}. 
+        You are evaluating a candidate for a {job_role} role.
+        
+        Analyze this resume based on {company}'s typical hiring standards, culture, and job requirements for a {job_role}.
+        
+        Provide a detailed, realistic "Real World Scenario" analysis:
+        1. **Company Fit**: How well does this candidate match {company}'s values and technical bar?
+        2. **Technical Alignment**: Does their experience align with the tech stack and challenges at {company}?
+        3. **Strengths**: What would stand out to a hiring manager at {company}?
+        4. **Critical Gaps**: What's missing that might cause them to be rejected or struggle in the interview?
+        5. **Actionable Roadmap**: 3-5 specific, high-impact changes to make this resume a "Top 1%" candidate for {company}.
+        6. **ATS Keywords**: Specific keywords they MUST add to pass {company}'s automated filters for {job_role}.
+        
+        Resume Content:
+        {text[:4000]}
+        
+        Format the response using professional markdown with headers and bullet points. 
+        Be honest, direct, and slightly critical—like a real internal feedback loop.
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
         """
 
         try:
             completion = client.chat.completions.create(
                 model="llama-3.1-8b-instant",
                 messages=[{"role": "user", "content": prompt}],
+<<<<<<< HEAD
                 temperature=0.5,
                 max_tokens=800
             )
             ai_analysis = completion.choices[0].message.content
         except Exception as e:
             ai_analysis = "AI analysis unavailable. Please review the feedback below."
+=======
+                temperature=0.4,
+                max_tokens=1500
+            )
+            ai_analysis = completion.choices[0].message.content
+        except Exception as e:
+            ai_analysis = "AI analysis unavailable. Please review the basic feedback below."
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
         
         # Combine feedback
         feedback_text = "\n".join(feedback_list)
         full_analysis = f"""
+<<<<<<< HEAD
 ATS Score: {ats_score}/100
 
 FEEDBACK:
@@ -81,6 +120,16 @@ FEEDBACK:
 
 DETAILED ANALYSIS:
 {ai_analysis}
+=======
+### 📊 REAL-WORLD ATS SCORE: {ats_score}/100
+*Note: This score is an estimate based on general industry standards.*
+
+{ai_analysis}
+
+---
+### 🔍 BASIC SYSTEM FEEDBACK
+{feedback_text}
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
         """
 
         new_resume = Resume(
@@ -95,7 +144,13 @@ DETAILED ANALYSIS:
         return jsonify({
             "analysis": full_analysis,
             "score": ats_score,
+<<<<<<< HEAD
             "feedback": feedback_list
+=======
+            "feedback": feedback_list,
+            "company": company,
+            "job_role": job_role
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
         }), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500

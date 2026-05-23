@@ -7,6 +7,30 @@ const Resume = () => {
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState(null);
     const [error, setError] = useState('');
+<<<<<<< HEAD
+=======
+    const [company, setCompany] = useState('Google');
+    const [customCompany, setCustomCompany] = useState('');
+    const [jobRole, setJobRole] = useState('Software Engineer');
+    const [customRole, setCustomRole] = useState('');
+
+    const companies = [
+        'Google', 'Amazon', 'Meta', 'Microsoft', 'Netflix', 'Apple', 'NVIDIA', 'Other'
+    ];
+
+    const roles = [
+        'Software Engineer',
+        'Frontend Developer',
+        'Backend Developer',
+        'Full Stack Engineer',
+        'Data Scientist',
+        'DevOps Engineer',
+        'Mobile Developer',
+        'Product Manager',
+        'UI/UX Designer',
+        'Other'
+    ];
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
@@ -21,6 +45,11 @@ const Resume = () => {
         setError('');
         const formData = new FormData();
         formData.append('file', file);
+<<<<<<< HEAD
+=======
+        formData.append('company', company === 'Other' ? customCompany : company);
+        formData.append('job_role', jobRole === 'Other' ? customRole : jobRole);
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
 
         try {
             const res = await resumeAPI.analyze(formData);
@@ -36,6 +65,7 @@ const Resume = () => {
         <div className="mx-auto mt-10 max-w-6xl px-4 pb-20">
             <div className="rounded-[3rem] border-2 border-slate-200 bg-slate-50/95 p-10 shadow-2xl ring-1 ring-slate-200 dark:bg-slate-900/90 dark:border-slate-800 dark:ring-slate-800 transition-all duration-300">
                 <div className="mb-12 text-center space-y-4">
+<<<<<<< HEAD
                     <div className="inline-flex items-center gap-2 rounded-full bg-indigo-500/10 px-4 py-2 text-sm font-semibold text-indigo-500 dark:bg-indigo-400/10 dark:text-indigo-400 ring-1 ring-inset ring-indigo-500/20">
                         ATS-Optimization Engine
                     </div>
@@ -47,6 +77,64 @@ const Resume = () => {
                     </p>
                 </div>
 
+=======
+                    <div className="inline-flex items-center gap-2 rounded-full bg-indigo-500/10 px-4 py-2 text-sm font-black text-indigo-500 dark:bg-indigo-400/10 dark:text-indigo-400 ring-1 ring-inset ring-indigo-500/20 uppercase tracking-widest">
+                        Real-World Scenario Analysis
+                    </div>
+                    <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-sky-50 sm:text-5xl">
+                        Analyze your resume for <span className="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">Specific Companies</span>
+                    </h2>
+                    <p className="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+                        Select your target company and role to see how your resume stacks up against real hiring standards.
+                    </p>
+                </div>
+
+                <div className="grid gap-8 mb-12 lg:grid-cols-2">
+                    <div className="space-y-3">
+                        <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 ml-4">Target Company</label>
+                        <select 
+                            value={company}
+                            onChange={(e) => setCompany(e.target.value)}
+                            className="w-full rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 px-6 py-4 outline-none transition-all focus:border-indigo-500/50 text-slate-900 dark:text-white font-bold shadow-sm cursor-pointer"
+                        >
+                            {companies.map(c => <option key={c} value={c} className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">{c}</option>)}
+                        </select>
+                        {company === 'Other' && (
+                            <motion.input
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                type="text"
+                                placeholder="Enter company name..."
+                                value={customCompany}
+                                onChange={(e) => setCustomCompany(e.target.value)}
+                                className="w-full mt-2 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 px-6 py-4 outline-none transition-all focus:border-indigo-500/50 text-slate-900 dark:text-white font-bold shadow-sm"
+                            />
+                        )}
+                    </div>
+                    <div className="space-y-3">
+                        <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 ml-4">Target Role</label>
+                        <select 
+                            value={jobRole}
+                            onChange={(e) => setJobRole(e.target.value)}
+                            className="w-full rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 px-6 py-4 outline-none transition-all focus:border-indigo-500/50 text-slate-900 dark:text-white font-bold shadow-sm cursor-pointer"
+                        >
+                            {roles.map(r => <option key={r} value={r} className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">{r}</option>)}
+                        </select>
+                        {jobRole === 'Other' && (
+                            <motion.input
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                type="text"
+                                placeholder="Enter custom role..."
+                                value={customRole}
+                                onChange={(e) => setCustomRole(e.target.value)}
+                                className="w-full mt-2 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 px-6 py-4 outline-none transition-all focus:border-indigo-500/50 text-slate-900 dark:text-white font-bold shadow-sm"
+                            />
+                        )}
+                    </div>
+                </div>
+
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
                 <form onSubmit={handleUpload} className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] items-start">
                     <div className="relative group rounded-[2.5rem] border-2 border-dashed border-slate-300 bg-slate-100 p-12 text-center dark:bg-slate-800/30 dark:border-slate-700 transition-all hover:border-indigo-400 dark:hover:border-indigo-500">
                         <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">📄</div>
@@ -108,7 +196,12 @@ const Resume = () => {
                         <div className="rounded-[2.5rem] border-2 border-slate-200 bg-slate-100 p-10 shadow-xl dark:bg-slate-800/50 dark:border-slate-800">
                             <div className="flex flex-col sm:flex-row items-center justify-between gap-8">
                                 <div className="text-center sm:text-left">
+<<<<<<< HEAD
                                     <p className="text-sm uppercase tracking-widest text-slate-500 dark:text-slate-500 font-bold mb-2">Overall ATS Score</p>
+=======
+                                    <p className="text-sm uppercase tracking-widest text-slate-500 dark:text-slate-500 font-bold mb-2">Analysis for {result.company}</p>
+                                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-4">{result.job_role}</h3>
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
                                     <div className="flex items-baseline gap-2">
                                         <span className="text-7xl font-black text-slate-900 dark:text-sky-50">{result.score}</span>
                                         <span className="text-2xl font-bold text-slate-500 dark:text-slate-500">/ 100</span>

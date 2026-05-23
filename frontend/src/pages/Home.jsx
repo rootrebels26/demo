@@ -118,17 +118,38 @@ const Home = () => {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
                         <Link 
                             to="/subject-selection" 
+<<<<<<< HEAD
                             className="bg-sky-500 text-white px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 transition-all shadow-2xl shadow-sky-500/30 uppercase tracking-[0.1em] flex items-center justify-center gap-3 group"
                         >
                             Start Mock Interview 
                             <Award size={22} className="group-hover:rotate-12 transition-transform" />
+=======
+                            className="bg-sky-500 text-white px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-sky-500/30 uppercase tracking-[0.1em] flex items-center justify-center gap-3 group overflow-hidden relative"
+                        >
+                            <span className="relative z-10">Start Mock Interview</span>
+                            <Award size={22} className="relative z-10 group-hover:rotate-12 transition-transform" />
+                            <motion.div 
+                                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full"
+                                animate={{ x: ['100%', '-100%'] }}
+                                transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                            />
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
                         </Link>
 
                         <Link 
                             to="/resume"
+<<<<<<< HEAD
                             className="border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/5 backdrop-blur-3xl px-8 py-4 rounded-2xl hover:bg-slate-200 dark:hover:bg-white/10 transition-all font-black text-lg text-slate-900 dark:text-white uppercase tracking-[0.1em] shadow-xl"
                         >
                             Scan Identity
+=======
+                            className="border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/5 backdrop-blur-3xl px-8 py-4 rounded-2xl hover:bg-slate-200 dark:hover:bg-white/10 active:scale-95 transition-all font-black text-lg text-slate-900 dark:text-white uppercase tracking-[0.1em] shadow-xl relative overflow-hidden group"
+                        >
+                            <span className="relative z-10">Scan Identity</span>
+                            <motion.div 
+                                className="absolute inset-0 bg-sky-500/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
+                            />
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
                         </Link>
                     </div>
                 </motion.div>
@@ -168,7 +189,20 @@ const Home = () => {
 
             {/* Trusted By */}
             <div className="w-full overflow-hidden border-y border-slate-200 dark:border-white/5 py-4 bg-white/70 dark:bg-slate-950/30 backdrop-blur-xl">
+<<<<<<< HEAD
                 <div className="marquee-track flex w-max items-center">
+=======
+                <motion.div 
+                    initial={{ x: 0 }}
+                    animate={{ x: "-50%" }}
+                    transition={{ 
+                        duration: 30, 
+                        repeat: Infinity, 
+                        ease: "linear" 
+                    }}
+                    className="flex w-max items-center"
+                >
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
                     {[...trustedCompanies, ...trustedCompanies, ...trustedCompanies].map((company, i) => (
                         <div key={`${company.name}-${i}`} className="marquee-logo mx-3 flex h-14 min-w-[190px] items-center gap-3 rounded-xl border border-slate-200/80 bg-white/80 px-5 shadow-sm dark:border-white/10 dark:bg-white/[0.04]">
                             <CompanyLogo company={company} size="large" />
@@ -177,7 +211,11 @@ const Home = () => {
                             </span>
                         </div>
                     ))}
+<<<<<<< HEAD
                 </div>
+=======
+                </motion.div>
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
             </div>
 
             {/* Feature Showcase */}

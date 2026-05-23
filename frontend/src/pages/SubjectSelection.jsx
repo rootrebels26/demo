@@ -6,6 +6,10 @@ import { motion } from 'framer-motion';
 
 const SubjectSelection = () => {
     const [selectedSubject, setSelectedSubject] = useState('');
+<<<<<<< HEAD
+=======
+    const [customSubject, setCustomSubject] = useState('');
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
     const [companyName, setCompanyName] = useState('');
     const [customCompany, setCustomCompany] = useState('');
     const navigate = useNavigate();
@@ -16,7 +20,12 @@ const SubjectSelection = () => {
         { id: 'backend', name: 'Backend Developer', icon: '⚙️', description: 'APIs, Databases, and Scalability.' },
         { id: 'behavioral', name: 'Behavioral', icon: '🤝', description: 'Leadership, Conflict, and Soft Skills.' },
         { id: 'data_science', name: 'Data Scientist', icon: '📊', description: 'ML, Statistics, and Data Analysis.' },
+<<<<<<< HEAD
         { id: 'fullstack', name: 'Full Stack', icon: '🚀', description: 'End-to-end Web Development.' }
+=======
+        { id: 'fullstack', name: 'Full Stack', icon: '🚀', description: 'End-to-end Web Development.' },
+        { id: 'other', name: 'Other', icon: '✨', description: 'Type your own specialized role.' }
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
     ];
     const companies = [
     {
@@ -58,7 +67,12 @@ const SubjectSelection = () => {
     const handleStartInterview = () => {
         if (selectedSubject) {
             const finalCompany = companyName === 'Other' ? customCompany : companyName;
+<<<<<<< HEAD
             localStorage.setItem('selectedSubject', selectedSubject);
+=======
+            const finalSubject = selectedSubject === 'other' ? customSubject : selectedSubject;
+            localStorage.setItem('selectedSubject', finalSubject);
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
             localStorage.setItem('selectedCompany', finalCompany || 'General');
             navigate('/interview');
         }
@@ -211,15 +225,39 @@ const SubjectSelection = () => {
                                     </motion.button>
                                 ))}
                             </div>
+<<<<<<< HEAD
+=======
+                            {selectedSubject === 'other' && (
+                                <motion.div 
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="mt-4"
+                                >
+                                    <input 
+                                        type="text"
+                                        placeholder="Enter specialized role (e.g. Cybersecurity Analyst)..."
+                                        className="w-full max-w-md bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-8 py-4 font-medium text-black dark:text-white outline-none focus:border-indigo-500/50 transition-all placeholder:text-slate-500"
+                                        value={customSubject}
+                                        onChange={(e) => setCustomSubject(e.target.value)}
+                                    />
+                                </motion.div>
+                            )}
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
                         </div>
                     </div>
 
                     <div className="mt-20 flex justify-center">
                         <button
                             onClick={handleStartInterview}
+<<<<<<< HEAD
                             disabled={!selectedSubject || (companyName === 'Other' && !customCompany)}
                             className={`group relative px-16 py-6 rounded-[2rem] font-black text-xl uppercase tracking-widest transition-all duration-500 ${
                                 (selectedSubject && (companyName !== 'Other' || customCompany))
+=======
+                            disabled={!selectedSubject || (companyName === 'Other' && !customCompany) || (selectedSubject === 'other' && !customSubject)}
+                            className={`group relative px-16 py-6 rounded-[2rem] font-black text-xl uppercase tracking-widest transition-all duration-500 ${
+                                (selectedSubject && (companyName !== 'Other' || customCompany) && (selectedSubject !== 'other' || customSubject))
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
                                     ? 'bg-white text-slate-900 shadow-[0_20px_40px_rgba(0,0,0,0.2)] hover:scale-105 active:scale-95' 
                                     : 'bg-white/5 text-slate-600 cursor-not-allowed grayscale'
                             }`}

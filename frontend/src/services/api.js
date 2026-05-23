@@ -16,6 +16,29 @@ api.interceptors.request.use((config) => {
     return config;
 });
 
+<<<<<<< HEAD
+=======
+// If a saved token expires or becomes invalid after a backend restart/config change,
+// clear it so protected pages do not keep firing unauthorized admin requests.
+api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        const isLoginRequest = error.config?.url?.includes('/auth/login');
+
+        if (error.response?.status === 401 && !isLoginRequest) {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+
+            if (window.location.pathname !== '/login') {
+                window.location.href = '/login';
+            }
+        }
+
+        return Promise.reject(error);
+    }
+);
+
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
 export const authAPI = {
     login: (credentials) => api.post('/auth/login', credentials),
     register: (userData) => api.post('/auth/register', userData),
@@ -24,7 +47,11 @@ export const authAPI = {
 };
 
 export const chatAPI = {
+<<<<<<< HEAD
     interact: (messages, subject = 'general', company = 'General', behavior = null) => api.post('/chat/interact', { messages, subject, company, behavior }),
+=======
+    interact: (messages, subject = 'general', company = 'General') => api.post('/chat/interact', { messages, subject, company }),
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
     save: (conversation, subject = 'general') => api.post('/chat/save', { conversation, subject }),
 };
 

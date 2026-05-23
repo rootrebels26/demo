@@ -49,7 +49,11 @@ const Login = () => {
                         <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 ml-4">Username</label>
                         <input
                             type="text"
+<<<<<<< HEAD
                             className="w-full rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-8 py-5 outline-none transition-all focus:border-sky-500/50 focus:bg-white/10 text-black dark:text-white font-medium shadow-inner"
+=======
+                            className="w-full rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 px-8 py-5 outline-none transition-all focus:border-sky-500/50 text-black dark:text-white font-medium shadow-inner"
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
@@ -59,7 +63,11 @@ const Login = () => {
                         <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 ml-4">Security Key</label>
                         <input
                             type="password"
+<<<<<<< HEAD
                             className="w-full rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-8 py-5 outline-none transition-all focus:border-sky-500/50 focus:bg-white/10 text-black dark:text-white font-medium shadow-inner"
+=======
+                            className="w-full rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 px-8 py-5 outline-none transition-all focus:border-sky-500/50 text-black dark:text-white font-medium shadow-inner"
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required

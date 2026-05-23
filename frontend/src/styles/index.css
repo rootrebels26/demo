@@ -98,6 +98,7 @@ body {
 
 .dark .grain-overlay {
   filter: contrast(150%) brightness(10%);
+<<<<<<< HEAD
   opacity: 0.15;
 }
 
@@ -116,6 +117,16 @@ body {
 
 .marquee-logo {
   flex: 0 0 auto;
+=======
+}
+
+.text-pro-gradient {
+  @apply bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent;
+}
+
+.dark .text-pro-gradient {
+  @apply bg-gradient-to-r from-white via-sky-100 to-sky-200 bg-clip-text text-transparent;
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
 }
 
 .hover-glow {
@@ -123,6 +134,7 @@ body {
 }
 
 .hover-glow:hover {
+<<<<<<< HEAD
   box-shadow: 0 0 40px rgba(56, 189, 248, 0.2);
 }
 
@@ -150,10 +162,18 @@ body {
 
 .text-muted {
   @apply text-slate-500 dark:text-slate-500;
+=======
+  @apply border-sky-500/30 shadow-[0_0_40px_rgba(56,189,248,0.15)];
+}
+
+.dark .hover-glow:hover {
+  @apply border-sky-400/30 shadow-[0_0_60px_rgba(56,189,248,0.25)];
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
+<<<<<<< HEAD
   width: 6px;
 }
 ::-webkit-scrollbar-track {
@@ -255,4 +275,48 @@ select {
 
 .animation-delay-500 {
   animation-delay: 0.5s;
+=======
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-200 dark:bg-white/10 rounded-full hover:bg-slate-300 dark:hover:bg-white/20 transition-colors;
+}
+
+/* Animations */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Form Elements Consistency */
+input, select, textarea {
+  @apply font-bold tracking-tight;
+}
+
+select option {
+  @apply bg-white text-slate-900 dark:bg-slate-900 dark:text-white;
+}
+
+/* Focus states */
+input:focus, select:focus, textarea:focus {
+  @apply ring-2 ring-sky-500/20 border-sky-500/50 outline-none;
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
 }

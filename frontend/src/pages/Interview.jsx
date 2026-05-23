@@ -4,7 +4,11 @@ import { chatAPI } from '../services/api';
 import AvatarSpeaker from '../components/AvatarSpeaker';
 import { useNavigate } from 'react-router-dom';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+<<<<<<< HEAD
 import { Activity, AlertTriangle, Camera, CameraOff, Eye, Lightbulb, Mic, MicOff, Send, ShieldCheck } from 'lucide-react';
+=======
+import { Mic, MicOff, Send } from 'lucide-react';
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
 
 const renderInlineFormatting = (text) => {
     const segments = text.split(/(`[^`]+`|\*\*[^*]+\*\*)/g);
@@ -69,6 +73,7 @@ const MessageContent = ({ content }) => {
     );
 };
 
+<<<<<<< HEAD
 const clampScore = (score) => Math.max(0, Math.min(100, Math.round(score)));
 
 const scoreLabel = (score) => {
@@ -84,6 +89,8 @@ const getConfidenceColor = (score) => {
     return 'bg-rose-500';
 };
 
+=======
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
 const Interview = () => {
     const requiredResponses = 6;
     const [messages, setMessages] = useState([]);
@@ -95,6 +102,7 @@ const Interview = () => {
     const [selectedCompany, setSelectedCompany] = useState('');
     const [ceoImage, setCeoImage] = useState('');
     const [user, setUser] = useState({});
+<<<<<<< HEAD
     const [cameraEnabled, setCameraEnabled] = useState(false);
     const [cameraError, setCameraError] = useState('');
     const [behaviorFeedback, setBehaviorFeedback] = useState([
@@ -113,6 +121,8 @@ const Interview = () => {
     const [interviewPaused, setInterviewPaused] = useState(false);
     const [pauseReason, setPauseReason] = useState('');
     const violationStreakRef = useRef(0);
+=======
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
 
     const {
         transcript,
@@ -121,6 +131,7 @@ const Interview = () => {
     } = useSpeechRecognition();
 
     const chatEndRef = useRef(null);
+<<<<<<< HEAD
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
     const mediaStreamRef = useRef(null);
@@ -188,6 +199,10 @@ const Interview = () => {
         }
     };
 
+=======
+    const navigate = useNavigate();
+
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
     useEffect(() => {
         const subject = localStorage.getItem('selectedSubject');
         const company = localStorage.getItem('selectedCompany') || 'General';
@@ -204,6 +219,7 @@ const Interview = () => {
         setUser(userData);
     }, [navigate]);
 
+<<<<<<< HEAD
     useEffect(() => () => stopCamera(false), []);
 
     useEffect(() => {
@@ -384,6 +400,8 @@ const Interview = () => {
         return () => window.clearInterval(interval);
     }, [cameraEnabled, confidenceScore, interviewPaused, listening]);
 
+=======
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
     useEffect(() => {
         if (transcript) {
             setInput(transcript);
@@ -419,10 +437,13 @@ const Interview = () => {
 
     const handleSend = async (e) => {
         if (e) e.preventDefault();
+<<<<<<< HEAD
         if (interviewPaused) {
             setError('Interview is paused. Confirm the warning before continuing.');
             return;
         }
+=======
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
         if (!input.trim()) return;
 
         if (listening) {
@@ -435,7 +456,11 @@ const Interview = () => {
         resetTranscript();
 
         try {
+<<<<<<< HEAD
             const res = await chatAPI.interact(newMessages, selectedSubject, selectedCompany, behaviorSummary);
+=======
+            const res = await chatAPI.interact(newMessages, selectedSubject, selectedCompany);
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
             const aiReply = res.data.reply;
             setMessages([...newMessages, { role: 'assistant', content: aiReply }]);
             setLastReply(res.data.speech_text || aiReply);
@@ -464,7 +489,11 @@ const Interview = () => {
 
     return (
         <div className="flex flex-col h-[calc(100vh-120px)] animate-fadeIn">
+<<<<<<< HEAD
             <div className={`flex-1 container mx-auto flex flex-col lg:flex-row gap-10 py-10 px-6 transition-all duration-500 ${interviewPaused ? 'blur-md pointer-events-none select-none' : ''}`}>
+=======
+            <div className="flex-1 container mx-auto flex flex-col lg:flex-row gap-10 py-10 px-6">
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
                 
                 {/* AI Persona Side */}
                 <div className="lg:w-1/3 flex flex-col gap-8">
@@ -504,6 +533,7 @@ const Interview = () => {
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
                     </div>
 
                     <div className="glass-panel rounded-[3rem] p-6 space-y-5 hover-glow border-slate-200 dark:border-white/5">
@@ -605,6 +635,8 @@ const Interview = () => {
                             ))}
                         </div>
 
+=======
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
                         <button 
                             onClick={finishInterview}
                             className="w-full mt-4 py-5 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-500 font-black text-xs uppercase tracking-[0.3em] hover:bg-rose-500 hover:text-white transition-all duration-500 shadow-2xl"
@@ -662,10 +694,16 @@ const Interview = () => {
                             <button
                                 type="button"
                                 onClick={toggleListening}
+<<<<<<< HEAD
                                 disabled={interviewPaused}
                                 className={`h-16 w-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${
                                     listening ? 'bg-rose-500 text-white shadow-[0_0_20px_rgba(244,63,94,0.4)]' : 'glass-panel text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white'
                                 } disabled:opacity-40`}
+=======
+                                className={`h-16 w-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${
+                                    listening ? 'bg-rose-500 text-white shadow-[0_0_20px_rgba(244,63,94,0.4)]' : 'glass-panel text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white'
+                                }`}
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
                             >
                                 {listening ? <MicOff size={24} /> : <Mic size={24} />}
                             </button>
@@ -678,16 +716,23 @@ const Interview = () => {
                             />
                             <button
                                 type="submit"
+<<<<<<< HEAD
                                 disabled={!input.trim() || interviewPaused}
                                 className="h-16 px-10 rounded-2xl bg-sky-500 text-white font-black uppercase tracking-widest text-xs hover:bg-sky-600 disabled:opacity-50 disabled:grayscale transition-all shadow-[0_0_20px_rgba(56,189,248,0.3)] inline-flex items-center gap-3"
                             >
                                 <Send size={18} />
+=======
+                                disabled={!input.trim()}
+                                className="h-16 px-10 rounded-2xl bg-sky-500 text-white font-black uppercase tracking-widest text-xs hover:bg-sky-600 disabled:opacity-50 disabled:grayscale transition-all shadow-[0_0_20px_rgba(56,189,248,0.3)]"
+                            >
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
                                 Send Signal
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
             {interviewPaused && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 px-6 backdrop-blur-sm">
                     <div className="w-full max-w-lg rounded-[2rem] border border-rose-500/30 bg-white p-8 shadow-[0_40px_120px_rgba(0,0,0,0.35)] dark:bg-slate-950">
@@ -722,6 +767,8 @@ const Interview = () => {
                     </div>
                 </div>
             )}
+=======
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
         </div>
     );
 };

@@ -1,5 +1,9 @@
 // About page describing the AI Interview Coach product.
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
+=======
+import { motion } from 'framer-motion';
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
 import {
     ArrowRight,
     BriefcaseBusiness,
@@ -12,6 +16,28 @@ import {
     Users,
 } from 'lucide-react';
 
+<<<<<<< HEAD
+=======
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.2
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+    }
+};
+
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
 const storySections = [
     {
         icon: Lightbulb,
@@ -88,8 +114,19 @@ const AboutUs = () => {
             <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.14),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(99,102,241,0.12),_transparent_25%)] dark:bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.18),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(99,102,241,0.16),_transparent_25%)]" />
 
             <div className="relative mx-auto flex max-w-7xl flex-col gap-16 px-4 py-16 sm:py-20">
+<<<<<<< HEAD
                 <section className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
                     <div>
+=======
+                <motion.section 
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={containerVariants}
+                    className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]"
+                >
+                    <motion.div variants={itemVariants}>
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
                         <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-sky-600 dark:text-sky-300">
                             About AI Interview Coach
                         </p>
@@ -99,6 +136,7 @@ const AboutUs = () => {
                         <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
                             Hey there. We built AI Interview Coach for students, freshers, and professionals who have the potential, but need a smarter way to practice interviews and improve applications before the opportunity arrives.
                         </p>
+<<<<<<< HEAD
                         <div className="mt-8 flex flex-wrap gap-4">
                             <Link to="/signup" className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-slate-900/10 transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200">
                                 Start your journey
@@ -145,6 +183,60 @@ const AboutUs = () => {
                         </article>
                     ))}
                 </section>
+=======
+                        <div className="mt-10 flex flex-wrap gap-4">
+                            <Link
+                                to="/subject-selection"
+                                className="inline-flex items-center gap-2 rounded-2xl bg-sky-500 px-8 py-4 text-sm font-black text-white shadow-[0_20px_40px_rgba(14,165,233,0.3)] transition-all hover:bg-sky-600 active:scale-95 uppercase tracking-widest"
+                            >
+                                Start Practice <ArrowRight size={18} />
+                            </Link>
+                            <Link
+                                to="/resume"
+                                className="inline-flex items-center gap-2 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-8 py-4 text-sm font-black text-slate-900 dark:text-white transition-all hover:bg-slate-50 dark:hover:bg-white/10 active:scale-95 uppercase tracking-widest"
+                            >
+                                Scan Resume
+                            </Link>
+                        </div>
+                    </motion.div>
+                    <motion.div 
+                        variants={itemVariants}
+                        className="relative hidden lg:block"
+                    >
+                        <div className="absolute -inset-4 bg-sky-500/10 blur-3xl rounded-[3rem]"></div>
+                        <img 
+                            src="/image1.png" 
+                            alt="AI Interview Coaching" 
+                            className="relative rounded-[3rem] border border-white/10 shadow-2xl grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
+                        />
+                    </motion.div>
+                </motion.section>
+
+                <motion.section 
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    variants={containerVariants}
+                    className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
+                >
+                    {storySections.map((item, idx) => (
+                        <motion.div 
+                            key={idx}
+                            variants={itemVariants}
+                            whileHover={{ y: -5 }}
+                            className="glass-card rounded-[2.5rem] p-8 hover-glow transition-all"
+                        >
+                            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-500/10 text-sky-500">
+                                <item.icon size={24} />
+                            </div>
+                            <h3 className="mt-6 text-xl font-extrabold text-slate-950 dark:text-white">{item.title}</h3>
+                            <p className="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                                {item.text}
+                            </p>
+                        </motion.div>
+                    ))}
+                </motion.section>
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
 
                 <section>
                     <div className="max-w-3xl">
@@ -166,6 +258,7 @@ const AboutUs = () => {
                     </div>
                 </section>
 
+<<<<<<< HEAD
                 <section className="rounded-[2rem] bg-white p-6 shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800 sm:p-8">
                     <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-sky-600 dark:text-sky-300">How it works?</p>
                     <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
@@ -182,6 +275,34 @@ const AboutUs = () => {
                         ))}
                     </div>
                 </section>
+=======
+                <motion.section 
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    variants={containerVariants}
+                    className="rounded-[3.5rem] bg-slate-900 px-8 py-20 text-white sm:px-16"
+                >
+                    <div className="mx-auto max-w-3xl text-center">
+                        <motion.h2 variants={itemVariants} className="text-3xl font-extrabold sm:text-5xl tracking-tight">How it works.</motion.h2>
+                        <motion.p variants={itemVariants} className="mt-6 text-lg text-slate-400">Simple steps to turn your preparation into progress.</motion.p>
+                    </div>
+                    <div className="mt-16 grid gap-12 lg:grid-cols-3">
+                        {steps.map((item, idx) => (
+                            <motion.div key={idx} variants={itemVariants} className="flex flex-col items-center text-center group">
+                                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 text-sky-400 transition-transform group-hover:scale-110 group-hover:rotate-3">
+                                    <item.icon size={32} />
+                                </div>
+                                <span className="mt-6 text-xs font-black uppercase tracking-[0.3em] text-sky-500">{item.step}</span>
+                                <h3 className="mt-2 text-xl font-extrabold">{item.title}</h3>
+                                <p className="mt-4 text-sm leading-relaxed text-slate-400">
+                                    {item.text}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.section>
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
 
                 <section className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
                     <div>

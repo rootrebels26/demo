@@ -21,12 +21,16 @@ def interact():
     messages = data.get('messages', [])
     subject = data.get('subject', 'general')
     company = data.get('company', 'General')
+<<<<<<< HEAD
     behavior = data.get('behavior')
+=======
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
     
     system_prompt = {
         "role": "system",
         "content": build_interview_prompt(subject, company)
     }
+<<<<<<< HEAD
 
     if behavior:
         behavior_prompt = {
@@ -40,6 +44,10 @@ def interact():
         groq_messages = [system_prompt, behavior_prompt] + messages
     else:
         groq_messages = [system_prompt] + messages
+=======
+    
+    groq_messages = [system_prompt] + messages
+>>>>>>> d417c960dd5719642e7328a49bba71d30ef531ff
 
     try:
         completion = client.chat.completions.create(
