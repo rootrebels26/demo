@@ -1,0 +1,167 @@
+/* Global Tailwind and app-wide visual styles. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  @apply bg-slate-50 text-slate-900 transition-colors duration-500;
+}
+
+.dark body {
+  @apply bg-[#020617] text-slate-100;
+}
+
+/* Elite Glassmorphism */
+.glass-panel {
+  @apply bg-white/70 backdrop-blur-2xl border border-slate-200 shadow-xl;
+}
+
+.dark .glass-panel {
+  @apply bg-slate-900/40 border-white/10 shadow-none;
+}
+
+.glass-card {
+  @apply bg-white backdrop-blur-3xl border border-slate-200 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.05)];
+}
+
+.dark .glass-card {
+  @apply bg-slate-900/60 border-white/20 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.3)];
+}
+
+/* Background Advanced Gradients */
+.bg-gradient-mesh {
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(236, 72, 153, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(56, 189, 248, 0.05) 0%, transparent 50%),
+    #f8fafc;
+  background-attachment: fixed;
+}
+
+.dark .bg-gradient-mesh {
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 1) 0%, transparent 100%),
+    radial-gradient(circle at 100% 100%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+    #020617;
+  background-attachment: fixed;
+}
+
+.neural-grid {
+  background-image: radial-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.feature-grid {
+  background-image:
+    linear-gradient(to right, rgba(14, 165, 233, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 165, 233, 0.12) 1px, transparent 1px);
+  background-size: 82px 82px;
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+.dark .feature-grid {
+  background-image:
+    linear-gradient(to right, rgba(125, 211, 252, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(125, 211, 252, 0.08) 1px, transparent 1px);
+}
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  filter: contrast(150%) brightness(1000%);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.dark .grain-overlay {
+  filter: contrast(150%) brightness(10%);
+}
+
+.text-pro-gradient {
+  @apply bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent;
+}
+
+.dark .text-pro-gradient {
+  @apply bg-gradient-to-r from-white via-sky-100 to-sky-200 bg-clip-text text-transparent;
+}
+
+.hover-glow {
+  @apply transition-all duration-500;
+}
+
+.hover-glow:hover {
+  @apply border-sky-500/30 shadow-[0_0_40px_rgba(56,189,248,0.15)];
+}
+
+.dark .hover-glow:hover {
+  @apply border-sky-400/30 shadow-[0_0_60px_rgba(56,189,248,0.25)];
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-200 dark:bg-white/10 rounded-full hover:bg-slate-300 dark:hover:bg-white/20 transition-colors;
+}
+
+/* Animations */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Form Elements Consistency */
+input, select, textarea {
+  @apply font-bold tracking-tight;
+}
+
+select option {
+  @apply bg-white text-slate-900 dark:bg-slate-900 dark:text-white;
+}
+
+/* Focus states */
+input:focus, select:focus, textarea:focus {
+  @apply ring-2 ring-sky-500/20 border-sky-500/50 outline-none;
+}
