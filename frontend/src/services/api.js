@@ -24,7 +24,7 @@ export const authAPI = {
 };
 
 export const chatAPI = {
-    interact: (messages, subject = 'general', company = 'General') => api.post('/chat/interact', { messages, subject, company }),
+    interact: (messages, subject = 'general', company = 'General', behavior = null) => api.post('/chat/interact', { messages, subject, company, behavior }),
     save: (conversation, subject = 'general') => api.post('/chat/save', { conversation, subject }),
 };
 

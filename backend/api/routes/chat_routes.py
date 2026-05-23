@@ -21,13 +21,25 @@ def interact():
     messages = data.get('messages', [])
     subject = data.get('subject', 'general')
     company = data.get('company', 'General')
+    behavior = data.get('behavior')
     
     system_prompt = {
         "role": "system",
         "content": build_interview_prompt(subject, company)
     }
-    
-    groq_messages = [system_prompt] + messages
+
+    if behavior:
+        behavior_prompt = {
+            "role": "system",
+            "content": (
+                "Use this live non-verbal interview signal as light coaching context. "
+                "Mention it only when useful, keep it supportive, and do not claim medical, "
+                f"emotion, or identity analysis: {behavior}"
+            )
+        }
+        groq_messages = [system_prompt, behavior_prompt] + messages
+    else:
+        groq_messages = [system_prompt] + messages
 
     try:
         completion = client.chat.completions.create(
